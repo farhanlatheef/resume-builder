@@ -1,0 +1,20 @@
+.container {
+    margin: auto;
+    width: 50%;
+}
+
+.clickable { cursor: pointer; }
+
+
+.botom-border  {
+	border-color : lightgrey;
+	border-bottom-width : 1px;
+	border-bottom-style: solid;
+}
+
+
+.border  {
+	border-color : lightgrey;
+	border-width : 1px;
+	border-style: solid;
+}

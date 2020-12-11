@@ -1,17 +1,44 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { Provider } from 'react-redux';
+
+import Resumes from './pages/resumes';
+import UpsertResume from './pages/upsertResume';
+import ViewResume from './pages/viewResume';
+
+import store from './helpers/store';
+
+import  'bootstrap/dist/css/bootstrap.min.css'
+
+import fa from './common/fa';
+
+
+import './css/common.css';
+
+import { configureFakeBE } from './helpers/fakeBE';
+configureFakeBE();
+
+
+function App() {
+    return (
+      <div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Resumes} />
+          <Route path="/upsert/:id?" component={UpsertResume} />
+          <Route path="/view/:id" component={ViewResume} />
+          <Redirect from="*" to="/" />
+        </Switch>
+      </BrowserRouter>
+      </div>
+    );
+}
+
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store} >
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
